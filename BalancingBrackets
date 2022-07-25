@@ -1,0 +1,36 @@
+package com.greatlearning.utils;
+import java.util.Stack;
+public class BalancingBrackets {
+	public static boolean checkBalancingBrackets(String bracketExpression) {
+		Stack<Character>bracketStack=new Stack<Character>();
+		for(int i=0;i<bracketExpression.length();i++) {
+			char Character=bracketExpression.charAt(i);
+			if(Character=='('|| Character=='['||Character=='{') {
+				bracketStack.push(Character);
+				continue;}
+			if(bracketStack.isEmpty()) {
+				return false;
+			}
+			char TopOfTheStack=bracketStack.pop();
+			switch(Character) {
+			case'}':
+				if(TopOfTheStack!='{') {
+					return false;
+				}
+				break;
+			case')':
+				if(TopOfTheStack!='(') {
+					return false;
+				}
+				break;
+			case']':
+				if(TopOfTheStack!='[') {
+					return false;
+				}
+				break;
+			default:return false;}
+			}
+		return bracketStack.isEmpty();
+		}
+	}
+
